@@ -24,7 +24,7 @@
     function beeHoneycomb() {
         return {
             xmlhttpRequest: null,
-            resultType: null,
+            resultType: 'text',
             queue: [],
             validMethods: ['get', 'post', 'put', 'head', 'delete', 'options', 'trace', 'connect', 'patch', 'copy', 'link', 'unlink', 'purge'],
             resultTypes: ['text', 'xml', 'json'],
@@ -372,6 +372,7 @@
                 if (reqOnSuccess) {
                     this.xmlhttpRequest.addEventListener("load", function (e) {
                         var resultData = null;
+                        
                         switch (glob.resultType) {
                             case 'text':
                                 resultData = this.responseText;
@@ -637,7 +638,6 @@
         return {
             link: null,
             queue: [],
-            types: ['text/css'],
             rels: ['alternate', 'archives', 'author', 'bookmark', 'external', 'first', 'help', 'icon', 'last', 'license', 'next', 'nofollow', 'noreferrer', 'pingback', 'prefetch', 'prev', 'search', 'sidebar', 'stylesheet', 'tag', 'up'],
             queueSearch: function (attr) {
                 // first fetch the objects that have specific type
@@ -707,7 +707,7 @@
                 return this;
             },
             type: function (type) {
-                if (typeof type !== 'string' || this.types.indexOf(type) === -1) {
+                if (typeof type !== 'string') {
                     throw 'Bee: Invalid type';
                 }
 
@@ -848,7 +848,6 @@
         return {
             style: null,
             queue: [],
-            types: ['text/css'],
             queueSearch: function (attr) {
                 // first fetch the objects that have specific type
                 var queue = [];
@@ -895,7 +894,7 @@
                 return this;
             },
             type: function (type) {
-                if (typeof type !== 'string' || this.types.indexOf(type) === -1) {
+                if (typeof type !== 'string') {
                     throw 'Bee: Invalid type';
                 }
 
