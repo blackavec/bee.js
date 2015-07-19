@@ -36,12 +36,36 @@ just need to put this code in head's tag of your project and then our lovely bee
 
 <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript/bee.min.js<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
 
-<p>after loading bee framework is usable by calling from &gt; bee variable.</p>
+<p>after loading bee framework is usable by calling from <code>bee</code> variable.</p>
 
 <h3>
 <a id="modules" class="anchor" href="#modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modules</h3>
 
-<p>There are many modules which you can use by calling it with </p>
+<p>There are many modules which you can use by calling it by <code>wizz()</code> method.
+also for those who are a little old fashion, we provided some alternation such as:</p>
+
+<ul>
+<li>bee.start(module);</li>
+<li>bee.load(module);</li>
+</ul>
+
+<div class="highlight highlight-html"><pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1">   bee.wizz(<span class="pl-c1">module</span>);</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<p><strong>honeycomb</strong>
+honeycomb is a module that handle the ajax requests.
+honeycomb has some chain methods which you can make a query with those and then execute it by calling <code>spread()</code> method.</p>
+
+<div class="highlight highlight-javascript"><pre>bee.wizz(<span class="pl-s"><span class="pl-pds">'</span>honeycomb<span class="pl-pds">'</span></span>)
+   .request(<span class="pl-s"><span class="pl-pds">'</span>http://domain.com/index.html<span class="pl-pds">'</span></span>)
+   .<span class="pl-c1">method</span>(<span class="pl-s"><span class="pl-pds">'</span>get<span class="pl-pds">'</span></span>)
+   .on(<span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">result</span>) {
+      <span class="pl-c">// result </span>
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>, result);
+    })
+   .resultData(<span class="pl-s"><span class="pl-pds">'</span>text<span class="pl-pds">'</span></span>)
+   .spread();</pre></div>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
