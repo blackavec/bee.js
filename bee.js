@@ -24,7 +24,7 @@
     function beeHoneycomb() {
         return {
             xmlhttpRequest: null,
-            resultType: null,
+            resultType: 'text',
             queue: [],
             validMethods: ['get', 'post', 'put', 'head', 'delete', 'options', 'trace', 'connect', 'patch', 'copy', 'link', 'unlink', 'purge'],
             resultTypes: ['text', 'xml', 'json'],
@@ -277,9 +277,9 @@
                 var reqFiles = this.queueSearch({
                     type: 'files'
                 });
-                var reqOnBeforeSting = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeSting'
+                    event: 'beforestart'
                 });
                 var reqOnSuccess = this.queueSearch({
                     type: 'on',
@@ -365,13 +365,14 @@
 
                 if (reqOnProgress) {
                     this.xmlhttpRequest.addEventListener("progress", function (e) {
-                        reqOnProgress.callback(this);
+                        reqOnProgress.callback(e);
                     }, false);
                 }
 
                 if (reqOnSuccess) {
                     this.xmlhttpRequest.addEventListener("load", function (e) {
                         var resultData = null;
+                        
                         switch (glob.resultType) {
                             case 'text':
                                 resultData = this.responseText;
@@ -392,8 +393,8 @@
                     }, true);
                 }
 
-                if (reqOnBeforeSting) {
-                    reqOnBeforeSting.callback();
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback();
                 }
 
                 this.xmlhttpRequest.send(formData);
@@ -563,9 +564,9 @@
                     type: 'charset'
                 });
 
-                var reqOnBeforeLoad = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeload'
+                    event: 'beforestart'
                 });
                 var reqOnLoad = this.queueSearch({
                     type: 'on',
@@ -605,8 +606,8 @@
                     }
 
                 }
-                if (reqOnBeforeLoad) {
-                    reqOnBeforeLoad.callback({});
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback({});
                 }
                 document.getElementsByTagName('head')[0].appendChild(this.script);
 
@@ -637,7 +638,6 @@
         return {
             link: null,
             queue: [],
-            types: ['text/css'],
             rels: ['alternate', 'archives', 'author', 'bookmark', 'external', 'first', 'help', 'icon', 'last', 'license', 'next', 'nofollow', 'noreferrer', 'pingback', 'prefetch', 'prev', 'search', 'sidebar', 'stylesheet', 'tag', 'up'],
             queueSearch: function (attr) {
                 // first fetch the objects that have specific type
@@ -707,7 +707,7 @@
                 return this;
             },
             type: function (type) {
-                if (typeof type !== 'string' || this.types.indexOf(type) === -1) {
+                if (typeof type !== 'string') {
                     throw 'Bee: Invalid type';
                 }
 
@@ -775,9 +775,9 @@
                     type: 'charset'
                 });
 
-                var reqOnBeforeLoad = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeload'
+                    event: 'beforestart'
                 });
                 var reqOnLoad = this.queueSearch({
                     type: 'on',
@@ -821,8 +821,8 @@
                     };
                 }
 
-                if (reqOnBeforeLoad) {
-                    reqOnBeforeLoad.callback({});
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback({});
                 }
                 document.getElementsByTagName('head')[0].appendChild(this.link);
 
@@ -848,7 +848,6 @@
         return {
             style: null,
             queue: [],
-            types: ['text/css'],
             queueSearch: function (attr) {
                 // first fetch the objects that have specific type
                 var queue = [];
@@ -895,7 +894,7 @@
                 return this;
             },
             type: function (type) {
-                if (typeof type !== 'string' || this.types.indexOf(type) === -1) {
+                if (typeof type !== 'string') {
                     throw 'Bee: Invalid type';
                 }
 
@@ -946,9 +945,9 @@
                     type: 'charset'
                 });
 
-                var reqOnBeforeLoad = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeload'
+                    event: 'beforestart'
                 });
                 var reqOnLoad = this.queueSearch({
                     type: 'on',
@@ -969,8 +968,8 @@
                     throw 'Bee: code does not define';
                 }
 
-                if (reqOnBeforeLoad) {
-                    reqOnBeforeLoad.callback({});
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback({});
                 }
                 document.getElementsByTagName('head')[0].appendChild(this.style);
                 if (reqOnLoad) {
