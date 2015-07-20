@@ -277,9 +277,9 @@
                 var reqFiles = this.queueSearch({
                     type: 'files'
                 });
-                var reqOnBeforeSting = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeSting'
+                    event: 'beforestart'
                 });
                 var reqOnSuccess = this.queueSearch({
                     type: 'on',
@@ -365,7 +365,7 @@
 
                 if (reqOnProgress) {
                     this.xmlhttpRequest.addEventListener("progress", function (e) {
-                        reqOnProgress.callback(this);
+                        reqOnProgress.callback(e);
                     }, false);
                 }
 
@@ -393,8 +393,8 @@
                     }, true);
                 }
 
-                if (reqOnBeforeSting) {
-                    reqOnBeforeSting.callback();
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback();
                 }
 
                 this.xmlhttpRequest.send(formData);
@@ -564,9 +564,9 @@
                     type: 'charset'
                 });
 
-                var reqOnBeforeLoad = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeload'
+                    event: 'beforestart'
                 });
                 var reqOnLoad = this.queueSearch({
                     type: 'on',
@@ -606,8 +606,8 @@
                     }
 
                 }
-                if (reqOnBeforeLoad) {
-                    reqOnBeforeLoad.callback({});
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback({});
                 }
                 document.getElementsByTagName('head')[0].appendChild(this.script);
 
@@ -775,9 +775,9 @@
                     type: 'charset'
                 });
 
-                var reqOnBeforeLoad = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeload'
+                    event: 'beforestart'
                 });
                 var reqOnLoad = this.queueSearch({
                     type: 'on',
@@ -821,8 +821,8 @@
                     };
                 }
 
-                if (reqOnBeforeLoad) {
-                    reqOnBeforeLoad.callback({});
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback({});
                 }
                 document.getElementsByTagName('head')[0].appendChild(this.link);
 
@@ -945,9 +945,9 @@
                     type: 'charset'
                 });
 
-                var reqOnBeforeLoad = this.queueSearch({
+                var reqOnBeforeStart = this.queueSearch({
                     type: 'on',
-                    event: 'beforeload'
+                    event: 'beforestart'
                 });
                 var reqOnLoad = this.queueSearch({
                     type: 'on',
@@ -968,8 +968,8 @@
                     throw 'Bee: code does not define';
                 }
 
-                if (reqOnBeforeLoad) {
-                    reqOnBeforeLoad.callback({});
+                if (reqOnBeforeStart) {
+                    reqOnBeforeStart.callback({});
                 }
                 document.getElementsByTagName('head')[0].appendChild(this.style);
                 if (reqOnLoad) {
