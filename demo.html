@@ -60,9 +60,6 @@
         bee.wizz('link')
                 .href('http://mizante.com/assets/css/bootstrap.min.css')
                 .charset('UTF-8')
-            //                    .code(function () {
-            //                        alert('inline bitch!!!');
-            //                    })
                 .rel('stylesheet')
                 .type('text/css')
                 .on('beforeload', function () {
@@ -89,14 +86,14 @@
                 .spread();
 
         bee.wizz('script')
-                .src('lib/test.js')
+                .src('javascripts/main.js')
                 .charset('UTF-8')
             //                    .code(function () {
             //                        alert('inline bitch!!!');
             //                    })
                 .type('text/javascript')
                 .async()
-                .defer()
+//                .defer()
                 .on('beforeload', function () {
                     alert("Script beforeload");
                 })

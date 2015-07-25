@@ -302,16 +302,50 @@
             <hr>
             <div class="blog-post" id="Modules-Script">
                 <h2 class="blog-post-title-inner">Script</h2>
+
                 <p>
-                    This module manage the <code>script</code> tags and put them to the <code>head</code> tag then execute that.
+                    This module manage the <code>script</code> tags and put them to the <code>head</code> tag then
+                    execute that.
                 </p>
+
+                <div class="highlight highlight-javascript">
+                    <pre><span class="pl-k">var</span> beeObj <span class="pl-k">=</span> bee.wizz(<span
+                            class="pl-s"><span class="pl-pds">'</span>script<span class="pl-pds">'</span></span>)
+   .src(<span class="pl-s"><span class="pl-pds">'</span>/javascripts/script.js<span
+                                class="pl-pds">'</span></span>)
+   .<span class="pl-c1">charset</span>(<span class="pl-s"><span class="pl-pds">'</span>UTF-8<span
+                                class="pl-pds">'</span></span>)
+   .<span class="pl-c1">type</span>(<span class="pl-s"><span class="pl-pds">'</span>text/javascript<span
+                                class="pl-pds">'</span></span>)
+   .<span class="pl-c1">async</span>()
+   .on(<span class="pl-s"><span class="pl-pds">'</span>beforeload<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span
+                                class="pl-smi">result</span>) {
+      <span class="pl-c">// before the script tag start to fetch the uri's data </span>
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>before start download the script<span
+                                class="pl-pds">'</span></span>, result);
+    })
+   .on(<span class="pl-s"><span class="pl-pds">'</span>ready<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span
+                                class="pl-smi">result</span>) {
+      <span class="pl-c">// when the script file has been downloaded and executed </span>
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>script file is ready<span
+                                class="pl-pds">'</span></span>, result);
+    })
+   .on(<span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span
+                                class="pl-smi">result</span>) {
+      <span class="pl-c">// when script's file does not exist or access denied </span>
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>script downloading has been failed<span
+                                class="pl-pds">'</span></span>, result);
+    })
+   .spread();</pre>
+                </div>
             </div>
             <hr>
             <div class="blog-post" id="Modules-Link">
                 <h2 class="blog-post-title-inner">Link</h2>
 
                 <p>
-
+                    This module manage the <code>link</code> tags and put them to the <code>head</code> tag then execute
+                    that.
                 </p>
             </div>
             <hr>
@@ -319,11 +353,12 @@
                 <h2 class="blog-post-title-inner">Style</h2>
 
                 <p>
-
+                    This module manage the <code>style</code> tags and put inline CSS to the <code>head</code> tag then
+                    execute that.
                 </p>
             </div>
 
-            <div class="blog-post" id="BigPipe">
+            <!--<div class="blog-post" id="BigPipe">
                 <h2 class="blog-post-title">BigPipe</h2>
 
                 <p>
@@ -336,7 +371,7 @@
                 <p>
 
                 </p>
-            </div>
+            </div>-->
             <hr>
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
@@ -365,11 +400,11 @@
                                 <li><a href="#Modules-Style">Style</a></li>
                             </ul>
                         </li>
-                        <li><a href="#BigPipe">BigPipe</a>
+                        <!--<li><a href="#BigPipe">BigPipe</a>
                             <ul>
                                 <li><a href="#BigPipe-Pagelet">Pagelet</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ol>
                 </div>
                 <div class="sidebar-module">
