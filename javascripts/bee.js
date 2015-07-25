@@ -309,7 +309,7 @@
                 qs.push(extraQueryString);
                 var queryString = qs.join('&');
 
-                var queryString = ((queryString) ? '?' + queryString : '');
+                queryString = ((queryString) ? '?' + queryString : '');
                 var queryHash = ((req.hashString) ? '#' + req.hashString : '');
                 var url = stripPath + queryString + queryHash;
                 var method = ((reqMethod.method) ? reqMethod.method : 'get');
@@ -568,9 +568,9 @@
                     type: 'on',
                     event: 'beforestart'
                 });
-                var reqOnLoad = this.queueSearch({
+                var reqOnReady = this.queueSearch({
                     type: 'on',
-                    event: 'load'
+                    event: 'ready'
                 });
                 var reqOnError = this.queueSearch({
                     type: 'on',
@@ -594,9 +594,9 @@
                     this.script.innerHTML = '(' + reqCode.code.toString() + ')(document, window);';
                 } else {
                     this.script.setAttribute('src', reqSrc.src);
-                    if (reqOnLoad) {
+                    if (reqOnReady) {
                         this.script.onload = function (s) {
-                            reqOnLoad.callback(this);
+                            reqOnReady.callback(this);
                         };
                     }
                     if (reqOnError) {
@@ -612,8 +612,8 @@
                 document.getElementsByTagName('head')[0].appendChild(this.script);
 
                 if (reqCode) {
-                    if (reqOnLoad) {
-                        reqOnLoad.callback({});
+                    if (reqOnReady) {
+                        reqOnReady.callback({});
                     }
                 }
             },
@@ -779,9 +779,9 @@
                     type: 'on',
                     event: 'beforestart'
                 });
-                var reqOnLoad = this.queueSearch({
+                var reqOnReady = this.queueSearch({
                     type: 'on',
-                    event: 'load'
+                    event: 'ready'
                 });
                 var reqOnError = this.queueSearch({
                     type: 'on',
@@ -810,9 +810,9 @@
                 if (reqHrefLang) {
                     this.link.setAttribute('hreflang', reqHrefLang.hreflang);
                 }
-                if (reqOnLoad) {
+                if (reqOnReady) {
                     this.link.onload = function (s) {
-                        reqOnLoad.callback(this);
+                        reqOnReady.callback(this);
                     };
                 }
                 if (reqOnError) {
@@ -949,9 +949,9 @@
                     type: 'on',
                     event: 'beforestart'
                 });
-                var reqOnLoad = this.queueSearch({
+                var reqOnReady = this.queueSearch({
                     type: 'on',
-                    event: 'load'
+                    event: 'ready'
                 });
 
 
@@ -972,8 +972,8 @@
                     reqOnBeforeStart.callback({});
                 }
                 document.getElementsByTagName('head')[0].appendChild(this.style);
-                if (reqOnLoad) {
-                    reqOnLoad.callback(this);
+                if (reqOnReady) {
+                    reqOnReady.callback(this);
                 }
             },
             bite: function () {
