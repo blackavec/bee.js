@@ -304,8 +304,8 @@
                 <h2 class="blog-post-title-inner">Script</h2>
 
                 <p>
-                    This module manage the <code>script</code> tags and put them to the <code>head</code> tag then
-                    execute that.
+                    This module manage the <code>script</code> tags and put them to the <code>head</code>'s tag then
+                    execute it.
                 </p>
 
                 <div class="highlight highlight-javascript">
@@ -318,7 +318,8 @@
    .<span class="pl-c1">type</span>(<span class="pl-s"><span class="pl-pds">'</span>text/javascript<span
                                 class="pl-pds">'</span></span>)
    .<span class="pl-c1">async</span>()
-   .on(<span class="pl-s"><span class="pl-pds">'</span>beforeload<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span
+   .on(<span class="pl-s"><span class="pl-pds">'</span>beforeload<span class="pl-pds">'</span></span>, <span
+                                class="pl-k">function</span> (<span
                                 class="pl-smi">result</span>) {
       <span class="pl-c">// before the script tag start to fetch the uri's data </span>
       <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>before start download the script<span
@@ -338,30 +339,315 @@
     })
    .spread();</pre>
                 </div>
+
+                <br>
+                <h5>list of the available methods:</h5>
+                <table class="table table-hover" style="font-size:12px">
+                    <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>src(<code>PATH:string</code>)</td>
+                        <td>
+                            defines the script file destination path
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>charset(<code>CHARSET:string</code>)</td>
+                        <td>
+                            you can change the charset of the script tag. (<b>UTF-8</b> is the default value)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>type(<code>TYPE:string</code>)</td>
+                        <td>
+                            represent the type of the script tag that you are expect.<br>
+                            (<b>text/javascript</b>, <b>text/vbscript</b> or ...)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>async()
+                        </td>
+                        <td>
+                            change the script loading mode to async.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>defer()
+                        </td>
+                        <td>
+                            change the script loading mode to defer.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>code(<code>CODE:function</code>)
+                        </td>
+                        <td>
+                            it allows you to inject your inline script into the <code>head</code>'s tag
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>on(<code>EVENT:string</code>, <code>CALLBACK:function</code>)</td>
+                        <td>
+                            events that trigger in specific situation
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+
+                <p>
+                    on(event, callback) events list:
+                </p>
+                <table class="table table-hover" style="font-size:12px">
+                    <thead>
+                    <tr>
+                        <th>event</th>
+                        <th style="width:35%;">description</th>
+                        <th>code</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>beforestart</td>
+                        <td>
+                            on('beforestart', function(){<br>
+                            // your codes<br>
+                            })
+                        </td>
+                        <td>
+                            calls before start import the script tag into <code>head</code>'s tag
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ready</td>
+                        <td>
+                            on('ready', function(){<br>
+                            // your codes<br>
+                            })
+                        </td>
+                        <td>
+                            dispatch when your script downloaded successfully and execute as well.<br>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>error</td>
+                        <td>
+                            on('error', function(){<br>
+                            // your codes<br>
+                            })
+                        </td>
+                        <td>
+                            calls when request has been failed.<br>
+                            <span class="text-danger">Failure may have many reasons such as:<br><b>404 Error</b>, <b>500
+                                Error</b> or ...</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <hr>
             <div class="blog-post" id="Modules-Link">
                 <h2 class="blog-post-title-inner">Link</h2>
 
                 <p>
-                    This module manage the <code>link</code> tags and put them to the <code>head</code> tag then execute
+                    This module manage the <code>link</code> tags and put them to the <code>head</code>'s tag then
+                    execute
                     that.
                 </p>
-            </div>
-            <hr>
-            <div class="blog-post" id="Modules-Style">
-                <h2 class="blog-post-title-inner">Style</h2>
+
+
+                <div class="highlight highlight-javascript">
+                    <pre><span class="pl-k">var</span> beeObj <span class="pl-k">=</span> bee.wizz(<span
+                            class="pl-s"><span class="pl-pds">'</span>link<span class="pl-pds">'</span></span>)
+   .href(<span class="pl-s"><span class="pl-pds">'</span>/styles/main.css<span
+                                class="pl-pds">'</span></span>)
+   .<span class="pl-c1">charset</span>(<span class="pl-s"><span class="pl-pds">'</span>UTF-8<span
+                                class="pl-pds">'</span></span>)
+   .<span class="pl-c1">rel</span>(<span class="pl-s"><span class="pl-pds">'</span>stylesheet<span
+                                class="pl-pds">'</span></span>)
+   .<span class="pl-c1">type</span>(<span class="pl-s"><span class="pl-pds">'</span>text/css<span
+                                class="pl-pds">'</span></span>)
+   .on(<span class="pl-s"><span class="pl-pds">'</span>beforeload<span class="pl-pds">'</span></span>, <span
+                                class="pl-k">function</span> (<span
+                                class="pl-smi">result</span>) {
+      <span class="pl-c">// it dispatches before the link tag inject to <code>head</code>'s tag </span>
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>before start download the script<span
+                                class="pl-pds">'</span></span>, result);
+    })
+   .on(<span class="pl-s"><span class="pl-pds">'</span>ready<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span
+                                class="pl-smi">result</span>) {
+      <span class="pl-c">// when link's file downloaded and executed </span>
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>script file is ready<span
+                                class="pl-pds">'</span></span>, result);
+    })
+   .on(<span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span
+                                class="pl-smi">result</span>) {
+      <span class="pl-c">// when link's file does not exist or access denied </span>
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>script downloading has been failed<span
+                                class="pl-pds">'</span></span>, result);
+    })
+   .spread();</pre>
+                </div>
+                <br>
+                <h5>list of the available methods:</h5>
+                <table class="table table-hover" style="font-size:12px">
+                    <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>href(<code>PATH:string</code>)</td>
+                        <td>
+                            defines the link's file destination path
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>hreflang(<code>PATH:string</code>)</td>
+                        <td>
+                            handle the <code>hreflang</code>'s attribute
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>charset(<code>CHARSET:string</code>)</td>
+                        <td>
+                            you can change the charset of the link's tag. (<b>UTF-8</b> is the default value)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>type(<code>TYPE:string</code>)</td>
+                        <td>
+                            represents the type of the link tag that you are expect.<br>
+                            (<b>text/css</b> or ...)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>rel(<code>REL:string</code>)</td>
+                        <td>
+                            you can define the value of <code>rel</code>'s attribute.<br>
+                            <span class="text-danger">this attributes just can handle on of these values:<br>
+                            (<b>alternate</b>,
+                                <b>archives</b>,
+                                <b>author</b>,
+                                <b>bookmark</b>,
+                                <b>external</b>,
+                                <b>first</b>,
+                                <b>help</b>,
+                                <b>icon</b>,
+                                <b>last</b>,
+                                <b>license</b>,
+                                <b>next</b>,
+                                <b>nofollow</b>,
+                                <b>noreferrer</b>,
+                                <b>pingback</b>,
+                                <b>prefetch</b>,
+                                <b>prev</b>,
+                                <b>search</b>,
+                                <b>sidebar</b>,
+                                <b>stylesheet</b>,
+                                <b>tag</b>,
+                                <b>up</b> )</span>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>on(<code>EVENT:string</code>, <code>CALLBACK:function</code>)</td>
+                        <td>
+                            events that trigger in specific situation
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
 
                 <p>
-                    This module manage the <code>style</code> tags and put inline CSS to the <code>head</code> tag then
-                    execute that.
+                    on(event, callback) events list:
                 </p>
+                <table class="table table-hover" style="font-size:12px">
+                    <thead>
+                    <tr>
+                        <th>event</th>
+                        <th style="width:35%;">description</th>
+                        <th>code</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>beforestart</td>
+                        <td>
+                            on('beforestart', function(){<br>
+                            // your codes<br>
+                            })
+                        </td>
+                        <td>
+                            calls before start import the link's tag into <code>head</code>'s tag
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ready</td>
+                        <td>
+                            on('ready', function(){<br>
+                            // your codes<br>
+                            })
+                        </td>
+                        <td>
+                            dispatch when your link file downloaded successfully and execute as well.<br>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>error</td>
+                        <td>
+                            on('error', function(){<br>
+                            // your codes<br>
+                            })
+                        </td>
+                        <td>
+                            calls when request has been failed.<br>
+                            <span class="text-danger">Failure may have many reasons such as:<br><b>404 Error</b>, <b>500
+                                Error</b> or ...</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!--<div class="blog-post" id="BigPipe">
+            <div class="blog-post" id="BigPipe">
                 <h2 class="blog-post-title">BigPipe</h2>
-
                 <p>
+                    By passing the time, every websites become biger than before. and this may cause of some performance issue for developers and actually websites.
+                    <br>
+                    <br>
+                    Big pipe helps projects to change their focus point from whole page to every small part of each page which called pagelet instead of having deal with the whole sources in one repository.
+                    <br>
+                    <br>
+                    It means that every pages that user reach can chunk to smaller parts. <br>
+                    for example, if you have a look on <a href="http://facebook.com">facebook</a>, you may notice that the page divided to some parts and each part load in deferent ajax request.
+                    <br>
+                    <br>
+                    If you want to load the whole data in one page at once, you can notice that you page load is really <b>slow</b>.
+                    <br>
+                    <br>
+                    <b>well</b>, what do we should do???<br>
+                    <b>it's really easy</b>. you can load every single part of your page as a pagelet to your page and make sure that every pagelet has its own css and script and it will execute whenever you want.
+                    <br>
+                    by doing this, you can see that your page probibly has some more page requests, but your page load time is really lower than before.
+                    <br>
                 </p>
             </div>
 
@@ -371,7 +657,7 @@
                 <p>
 
                 </p>
-            </div>-->
+            </div>
             <hr>
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
@@ -397,14 +683,13 @@
                                 <li><a href="#Modules-Honeycomb">Honeycomb</a></li>
                                 <li><a href="#Modules-Script">Script</a></li>
                                 <li><a href="#Modules-Link">Link</a></li>
-                                <li><a href="#Modules-Style">Style</a></li>
                             </ul>
                         </li>
-                        <!--<li><a href="#BigPipe">BigPipe</a>
+                        <li><a href="#BigPipe">BigPipe</a>
                             <ul>
                                 <li><a href="#BigPipe-Pagelet">Pagelet</a></li>
                             </ul>
-                        </li>-->
+                        </li>
                     </ol>
                 </div>
                 <div class="sidebar-module">

@@ -574,7 +574,7 @@
                 });
                 var reqOnError = this.queueSearch({
                     type: 'on',
-                    event: 'error'
+                        event: 'error'
                 });
 
                 if (reqAsync) {
