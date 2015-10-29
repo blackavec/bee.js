@@ -30,15 +30,13 @@
             resultTypes: ['text', 'xml', 'json'],
             xmlhttpRequestInit: function () {
                 var xmlHttp;
-                if (window.XMLHttpRequest)
-                {
+                if (window.XMLHttpRequest) {
                     /**
                      * code for IE7+, Firefox, Chrome, Opera, Safari
                      */
                     xmlHttp = new XMLHttpRequest();
                 }
-                else
-                {
+                else {
                     /**
                      * code for IE6, IE5
                      */
@@ -69,8 +67,8 @@
                     if (obj.hasOwnProperty(p)) {
                         var k = prefix ? prefix + '[' + p + ']' : p, v = obj[p];
                         str.push(typeof v == 'object' ?
-                                serialize(v, k) :
-                                encodeURIComponent(k) + '=' + encodeURIComponent(v));
+                            serialize(v, k) :
+                        encodeURIComponent(k) + '=' + encodeURIComponent(v));
                     }
                 }
                 return str.join('&');
@@ -250,7 +248,7 @@
                 return this;
             },
             /**
-             * this method prepair and start the query to work 
+             * this method prepair and start the query to work
              */
             execute: function () {
                 this.xmlhttpRequestInit();
@@ -315,12 +313,12 @@
                 var method = ((reqMethod.method) ? reqMethod.method : 'get');
 
                 this.xmlhttpRequest.open(
-                        method,
-                        url,
-                        ((typeof reqAsync.async === 'boolean') ? reqAsync.async : true),
-                        ((typeof reqCredential.username === 'string') ? reqCredential.username : ''),
-                        ((typeof reqCredential.password === 'string') ? reqCredential.password : '')
-                        );
+                    method,
+                    url,
+                    ((typeof reqAsync.async === 'boolean') ? reqAsync.async : true),
+                    ((typeof reqCredential.username === 'string') ? reqCredential.username : ''),
+                    ((typeof reqCredential.password === 'string') ? reqCredential.password : '')
+                );
 
 
                 var files = ((typeof reqFiles.isFile === 'boolean') ? reqFiles.files : false);
@@ -372,7 +370,7 @@
                 if (reqOnSuccess) {
                     this.xmlhttpRequest.addEventListener("load", function (e) {
                         var resultData = null;
-                        
+
                         switch (glob.resultType) {
                             case 'text':
                                 resultData = this.responseText;
@@ -416,6 +414,7 @@
             }
         };
     }
+
     function beeScript() {
         return {
             script: null,
@@ -490,8 +489,8 @@
             },
             async: function () {
                 if (this.queueSearch({
-                    type: 'defer'
-                })) {
+                        type: 'defer'
+                    })) {
                     throw 'Bee: Defer already declared';
                 }
 
@@ -503,8 +502,8 @@
             },
             defer: function () {
                 if (this.queueSearch({
-                    type: 'async'
-                })) {
+                        type: 'async'
+                    })) {
                     throw 'Bee: Async already declared';
                 }
                 this.appendToQueue({
@@ -539,7 +538,7 @@
                 return this;
             },
             /**
-             * start downloading 
+             * start downloading
              */
             execute: function () {
                 this.script = this.scriptObject();
@@ -634,6 +633,7 @@
             }
         };
     }
+
     function beeLink() {
         return {
             link: null,
@@ -754,7 +754,7 @@
                 return this;
             },
             /**
-             * start downloading 
+             * start downloading
              */
             execute: function () {
                 this.link = this.linkObject();
@@ -844,6 +844,7 @@
             }
         };
     }
+
     function beeStyle() {
         return {
             style: null,
@@ -930,7 +931,7 @@
                 return this;
             },
             /**
-             * start downloading 
+             * start downloading
              */
             execute: function () {
                 this.style = this.styleObject();
@@ -993,6 +994,7 @@
             }
         };
     }
+
     var bee = {
         /**
          * This method is for initiation of the framework
